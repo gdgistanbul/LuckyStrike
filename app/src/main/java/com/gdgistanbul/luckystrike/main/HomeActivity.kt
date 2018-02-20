@@ -1,9 +1,10 @@
-package com.gdgistanbul.luckystrike
+package com.gdgistanbul.luckystrike.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.gdgistanbul.luckystrike.R
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
