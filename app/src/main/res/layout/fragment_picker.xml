@@ -6,14 +6,28 @@
     android:background="@color/color_purple"
     android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        android:gravity="center_horizontal"
-        android:text="@string/picker_message"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/material_text_display1" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="@dimen/size_icon"
+            android:layout_height="@dimen/size_icon"
+            android:layout_margin="@dimen/margin"
+            android:src="@drawable/ic_picker"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:gravity="center_horizontal"
+            android:text="@string/picker_message"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/material_text_headline" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"

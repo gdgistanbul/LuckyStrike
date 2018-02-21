@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:background="@color/color_yellow">
 
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="@dimen/size_icon"
+        android:layout_height="@dimen/size_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin"
+        android:src="@drawable/ic_waiting"/>
+
+
     <TextView
         android:id="@+id/textview_waiting"
         android:layout_width="wrap_content"

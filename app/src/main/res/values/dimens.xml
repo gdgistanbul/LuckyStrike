@@ -16,4 +16,5 @@
     <dimen name="material_text_display4">112sp</dimen>
 
     <dimen name="margin">16dp</dimen>
+    <dimen name="size_icon">100dp</dimen>
 </resources>
