@@ -2,5 +2,7 @@
     <string name="app_name">LuckyStrike</string>
     <string name="hint_edittext">Username</string>
     <string name="next">Next</string>
+    <string name="kick">Kick</string>
     <string name="waiting_list_message">You are in waiting list!  %1$s people are here and waiting!</string>
+    <string name="picker_message">Sooorrry!  But it\'s your turn. Pick someone</string>
 </resources>
