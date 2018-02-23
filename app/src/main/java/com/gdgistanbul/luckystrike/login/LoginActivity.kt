@@ -38,10 +38,12 @@ class LoginActivity : AppCompatActivity() {
         /**
          *  check if the user is signed in and check for null.
          */
+
+        /*
         if (firebaseAuth.currentUser != null) {
             navigateHomePage()
             return
-        }
+        }*/
 
         edittextUsername = findViewById(R.id.edittext_username)
         buttonLogin = findViewById(R.id.button_login)
@@ -53,11 +55,12 @@ class LoginActivity : AppCompatActivity() {
      * user successfully logged in
      */
     fun login() {
+        /*
         if (TextUtils.isEmpty(edittextUsername.text)) return
 
         firebaseAuth.signInAnonymously()
                 .addOnSuccessListener { saveUserToDatabase() }
-                .addOnFailureListener { Log.v("TEST", "Error") }
+                .addOnFailureListener { Log.v("TEST", "Error") }*/
     }
 
     /**
@@ -66,10 +69,11 @@ class LoginActivity : AppCompatActivity() {
      * We create a user with generated id and save user to waiting list.
      */
     fun saveUserToDatabase() {
+        /*
         val firebaseReferences = firebaseReference.child(Constant.WAITING).push()
         val key = firebaseReferences.key
         firebaseReferences.setValue(
-                User(key, getUserName()), listener)
+                User(key, getUserName()), listener)*/
     }
 
     /**
