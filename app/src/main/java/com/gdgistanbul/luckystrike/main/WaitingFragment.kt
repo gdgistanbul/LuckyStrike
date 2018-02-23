@@ -30,6 +30,8 @@ class WaitingFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /*
         databaseReference.child(Constant.WAITING).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 var childSize = 0
@@ -44,7 +46,7 @@ class WaitingFragment : Fragment() {
             override fun onCancelled(databaseError: DatabaseError?) {
             }
 
-        })
+        })*/
     }
 
     private fun getWaitingListMessage(peopleCount: Int): String {
