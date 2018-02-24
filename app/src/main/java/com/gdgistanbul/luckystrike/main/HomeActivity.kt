@@ -39,7 +39,7 @@ class HomeActivity : AppCompatActivity() {
          * Calling getValue() on a snapshot returns the Java object representation of the data.
          * If no data exists at the location, calling getValue() returns null.
          */
-        databaseReference.child(Constant.LOOSERS)
+        /*databaseReference.child(Constant.LOOSERS)
                 .addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError?) {
                     }
@@ -58,14 +58,14 @@ class HomeActivity : AppCompatActivity() {
                                     }
                         }
                     }
-                })
+                })*/
 
         /**
          * The listener receives a DataSnapshot that contains the data at the specified location in the database at the time of the event.
          * Calling getValue() on a snapshot returns the Java object representation of the data.
          * If no data exists at the location, calling getValue() returns null.
          */
-        databaseReference.child(Constant.PICKER)
+        /*databaseReference.child(Constant.PICKER)
                 .addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError?) {
                     }
@@ -85,7 +85,7 @@ class HomeActivity : AppCompatActivity() {
                                     }
                         }
                     }
-                })
+                })*/
     }
 
     /**
