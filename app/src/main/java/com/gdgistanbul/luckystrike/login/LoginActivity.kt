@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import com.gdgistanbul.luckystrike.R
 import com.gdgistanbul.luckystrike.main.HomeActivity
 import com.gdgistanbul.luckystrike.model.Constant
@@ -30,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var edittextUsername: EditText
     private lateinit var buttonLogin: Button
+    private lateinit var waitingIndicator: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
 
         edittextUsername = findViewById(R.id.edittext_username)
         buttonLogin = findViewById(R.id.button_login)
+        waitingIndicator = findViewById(R.id.waiting_indicator)
         buttonLogin.setOnClickListener { login() }
     }
 
@@ -52,12 +57,42 @@ class LoginActivity : AppCompatActivity() {
      * Login user anonymously and call @saveUserToDatabase method on
      * user successfully logged in
      */
-    fun login() {
+    private fun login() {
         if (TextUtils.isEmpty(edittextUsername.text)) return
-
+        showWaitingIndicator()
+        disableTouch()
         firebaseAuth.signInAnonymously()
                 .addOnSuccessListener { saveUserToDatabase() }
                 .addOnFailureListener { Log.v("TEST", "Error") }
+    }
+
+    /**
+     * Disable touch to scren when click to login button
+     */
+    private fun disableTouch(){
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    /**
+     * Enable touch if login is successfull
+     */
+    private fun enableTouch(){
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    /**
+     * Show Indicator when click to login button
+     */
+    private fun showWaitingIndicator(){
+        waitingIndicator.visibility = View.VISIBLE
+    }
+
+    /**
+     * Hide Indicator if login is successfull
+     */
+    private fun hideWaitingIndicator(){
+        waitingIndicator.visibility = View.INVISIBLE
     }
 
     /**
@@ -65,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
      * push() method generates a "id" for our user.
      * We create a user with generated id and save user to waiting list.
      */
-    fun saveUserToDatabase() {
+    private fun saveUserToDatabase() {
         val firebaseReferences = firebaseReference.child(Constant.WAITING).push()
         val key = firebaseReferences.key
         firebaseReferences.setValue(
@@ -80,6 +115,8 @@ class LoginActivity : AppCompatActivity() {
                 databaseReference?.let {
                     PrefUtil.putString(this, Constant.USER_ID, databaseReference.key)
                     PrefUtil.putString(this, Constant.USER_NAME, getUserName())
+                    hideWaitingIndicator()
+                    enableTouch()
                     navigateHomePage()
                 }
             }
