@@ -35,18 +35,18 @@ class PickerFragment : Fragment(), PickerListAdapter.OnClickItemListener {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        databaseReference.child(Constant.WAITING).addValueEventListener(object : ValueEventListener {
+  /*      databaseReference.child(Constant.WAITING).addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
 
-                /**
+                *//**
                  * clear user list every data change.
-                 */
+                 *//*
                 userList.clear()
 
-                /**
+                *//**
                  * receives a DataSnapshot that contains the data at the specified  children.
-                 */
+                 *//*
                 dataSnapshot?.let {
                     it.children
                             .map { it.getValue(User::class.java) }
@@ -62,7 +62,7 @@ class PickerFragment : Fragment(), PickerListAdapter.OnClickItemListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
 
-        })
+        })*/
     }
 
     private fun setPickerListAdapter(userList: MutableList<User>) {
@@ -71,27 +71,27 @@ class PickerFragment : Fragment(), PickerListAdapter.OnClickItemListener {
     }
 
     override fun pickUser(selectedUser: User) {
-        deleteSelectedUserFromWaitingList(selectedUser)
-        insertSelectedUserToPickerList(selectedUser)
-        deletePickerUserFromWaitingList()
-        insertPickerUserToLooserList()
+        //deleteSelectedUserFromWaitingList(selectedUser)
+        //insertSelectedUserToPickerList(selectedUser)
+        //deletePickerUserFromWaitingList()
+        //insertPickerUserToLooserList()
     }
 
     /**
      * delete picked user from waiting list.
      * first get a DatabaseReference object and delete child node releted to selected user id.
      */
-    private fun deletePickerUserFromWaitingList() {
+   /* private fun deletePickerUserFromWaitingList() {
         val waitingDatabaseReference = databaseReference.child(Constant.WAITING)
         val user = getUser()
         waitingDatabaseReference.child(user.userId).removeValue()
-    }
+    }*/
 
     /**
      * insert selected user to picker list
      * first get a DatabaseReference object and insert a new child node releted to selected user id.
      */
-    private fun insertSelectedUserToPickerList(selectedUser: User) {
+   /* private fun insertSelectedUserToPickerList(selectedUser: User) {
 
         val pickerDatabaseReference = databaseReference.child(Constant.PICKER)
 
@@ -99,12 +99,12 @@ class PickerFragment : Fragment(), PickerListAdapter.OnClickItemListener {
         pickerDatabaseReference
                 .child(selectedUser.userId)
                 .setValue(User(selectedUser.userId, selectedUser.userName))
-    }
+    }*/
 
     /**
      * insert picker user to looser list.
      * that user should show Loser Page after this operation
-     */
+     *//*
     private fun insertPickerUserToLooserList() {
 
         val looserDatabaseReference = databaseReference.child(Constant.LOOSERS)
@@ -113,15 +113,15 @@ class PickerFragment : Fragment(), PickerListAdapter.OnClickItemListener {
         looserDatabaseReference
                 .child(user.userId)
                 .setValue(user)
-    }
+    }*/
 
     /**
      * delete picker user from waiting list.
      */
-    private fun deleteSelectedUserFromWaitingList(user: User) {
+    /*private fun deleteSelectedUserFromWaitingList(user: User) {
         val waitingDatabaseReference = databaseReference.child(Constant.WAITING)
         waitingDatabaseReference.child(user.userId).removeValue()
-    }
+    }*/
 
     /**
      * get user from local data source
